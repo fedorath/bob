@@ -9,7 +9,7 @@ GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_UP) #Left IR sensor module
 GPIO.setup(26,GPIO.OUT) #Left motor control
 GPIO.setup(24,GPIO.OUT) #Left motor control
 GPIO.setup(19,GPIO.OUT) #Right motor control
-GPIO.setup(13,GPIO.OUT) #Right motor control
+GPIO.setup(21,GPIO.OUT) #Right motor control
 
 #Motor stop/brake
 GPIO.output(26,0) 
