@@ -1,10 +1,5 @@
-import sys
-import cv2
-
-print("Python version: \n" + sys.version)
-print("cv2 version: " + cv2.__version__)
-
-img = cv2.imread('smallRPi.JPG', cv2.IMREAD_UNCHANGED)
-cv2.imshow('image',img)
-cv2.waitKey(0)
-cv2.destroyWindow('image')
+cmake_minimum_required(VERSION 2.8)
+project( displayimage )
+find_package( OpenCV REQUIRED )
+add_executable( displayimage display_image.cpp )
+target_link_libraries( displayimage ${OpenCV_LIBS} )
