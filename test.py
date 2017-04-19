@@ -24,8 +24,8 @@ while True:
 		print "Robot Activated",j
     
         while flag==1:
-		i=GPIO.input(3) #Listening for output from right IR sensor
-		k=GPIO.input(16) #Listening for output from left IR sensor
+		i=GPIO.input(11) #Listening for output from right IR sensor
+		k=GPIO.input(7) #Listening for output from left IR sensor
 		if i==0: #Obstacle detected on right IR sensor
 			#Move in reverse direction
 			GPIO.output(26,1) #Left motor turns anticlockwise
