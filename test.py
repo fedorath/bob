@@ -1,5 +1,20 @@
-cmake_minimum_required(VERSION 2.8)
-project( displayimage )
-find_package( OpenCV REQUIRED )
-add_executable( displayimage display_image.cpp )
-target_link_libraries( displayimage ${OpenCV_LIBS} )
+import numpy as np
+import cv2
+
+cap = cv2.VideoCapture(0)
+
+while(True):
+    # Capture frame-by-frame
+    ret, frame = cap.read()
+
+    # Our operations on the frame come here
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    # Display the resulting frame
+    cv2.imshow('frame',gray)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+# When everything done, release the capture
+cap.release()
+cv2.destroyAllWindows()
