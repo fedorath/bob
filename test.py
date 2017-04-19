@@ -34,7 +34,7 @@ while True:
 			GPIO.output(24,1)
 			GPIO.output(19,1)
 			GPIO.output(21,0)		
-			time.sleep(1)
+			time.sleep(2)
 
 		else:	#No obstacles, robot moves forward
 			print "No obstacles"
@@ -43,5 +43,5 @@ while True:
 			GPIO.output(24,1)
 			GPIO.output(19,0)
 			GPIO.output(21,1)
-			time.sleep(0.5)
+			
 	
