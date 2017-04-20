@@ -21,7 +21,7 @@ def captureImage(height, width, filename):
 	# -cfx 128:128 makes the image greyscale, I'm not sure if this affects fps but range remains unchanges
 	print "Capturing image"
 	subprocess.call("raspistill -t 1 -cfx 128:128 -n -h %s -w %s -o %s" % (height, width, filename), shell=True)
-	img = Image(filename)
+	cam.getImage(filename)
 	return img
 
 def detect(img):
@@ -53,7 +53,7 @@ def main():
 	filename = "image.bmp"
 	while disp.isNotDone():
 		try:
-			img = captureImage(height, width, filename)
+			img = cam.getImage(height, width, filename)
 			faces = detect(img) # chnage to detect(img) to focus on faces (better for close-up)
 			if faces is not None:
 				for f in faces:
