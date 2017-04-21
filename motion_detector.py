@@ -27,7 +27,7 @@ while True:
 	
 	while flag==1:
 		i=GPIO.input(7) #Listening for output from right IR sensor
-		l=GPIO.input(13)#center IR
+		l=GPIO.input(15)#center IR
 		k=GPIO.input(11) #Listening for output from left IR sensor
 		if i==0: #Obstacle detected on right IR sensor
 			print "Obstacle detected on Right",i 
