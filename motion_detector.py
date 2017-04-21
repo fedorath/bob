@@ -2,9 +2,9 @@ import RPi.GPIO as GPIO
 import time
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(11, GPIO.IN) #Right IR sensor module
-GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) #Activation button
-GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_UP) #Left IR sensor module
+GPIO.setup(7, GPIO.IN) #Right IR sensor module
+GPIO.setup(13, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) #Activation button
+GPIO.setup(11, GPIO.IN, pull_up_down=GPIO.PUD_UP) #Left IR sensor module
 
 GPIO.setup(26,GPIO.OUT) #Left motor control
 GPIO.setup(24,GPIO.OUT) #Left motor control
@@ -25,8 +25,8 @@ while True:
 		print "Robot Activated",j
 	
 	while flag==1:
-		i=GPIO.input(11) #Listening for output from right IR sensor
-		k=GPIO.input(7) #Listening for output from left IR sensor
+		i=GPIO.input(7) #Listening for output from right IR sensor
+		k=GPIO.input(11) #Listening for output from left IR sensor
 		if i==0: #Obstacle detected on right IR sensor
 			print "Obstacle detected on Right",i 
 			#Move in reverse direction
