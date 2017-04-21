@@ -1,41 +1,89 @@
-# FACE DETECTION
-# --------------------
-# Command line version
-# --------------------
-# Simple face-detecting script for the camera module using SimpleCV.
-# This will continuously take images and search them for himan features. Which features can 
-# be set on the line 'faces = img.findHaarFeatures('face.xml').
-# As an out put it will print the coordinates for each face detected.
-#--------------------- 
+import RPi.GPIO as GPIO
+import time
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(11, GPIO.IN) #Right IR sensor module
+GPIO.setup(16, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) #Activation button
+GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_UP) #Left IR sensor module
 
-print 'Initialize'	# SimpleCV is BIG so it takes a good 5 seconds to import
-from SimpleCV import Display, Image
-import os			
+GPIO.setup(26,GPIO.OUT) #Left motor control
+GPIO.setup(24,GPIO.OUT) #Left motor control
+GPIO.setup(19,GPIO.OUT) #Right motor control
+GPIO.setup(21,GPIO.OUT) #Right motor control
 
-filename = 'frame'	# Save each loop's image under the same name so it's overwritten
+#Motor stop/brake
+GPIO.output(26,0) 
+GPIO.output(24,0)
+GPIO.output(19,0)
+GPIO.output(21,0)
 
-try:
-	print 'Press Ctrl+C to exit.'
-	while True:
-		# Take an image using raspistill. The small resolution helps speed things up
-		print 'Capturing...'
-		os.system('raspistill -n -w 500 -h 500 -o %s.jpg' % filename)
-		img = Image('%s.jpg' % filename)	# Pass the captured image to SimpleCV
+flag=0
+while True:
+	j=GPIO.input(16)
+	if j==1: #Robot is activated when button is pressed
+		flag=1
+		print "Robot Activated",j
+	
+	while flag==1:
+		i=GPIO.input(11) #Listening for output from right IR sensor
+		k=GPIO.input(7) #Listening for output from left IR sensor
+		if i==0: #Obstacle detected on right IR sensor
+			print "Obstacle detected on Right",i 
+			#Move in reverse direction
+			GPIO.output(26,1) #Left motor turns anticlockwise
+			GPIO.output(24,0)  
+			GPIO.output(19,1) #Right motor turns clockwise
+			GPIO.output(21,0)		
+			time.sleep(1)
 
-		print 'Searching...'
-		# This is the bit that does all the work:
-		# Try putting 'upper_body.xml' or 'eye.xml' in place of 'face.xml'
-		faces = img.findHaarFeatures('face.xml') 
+			#Turn robot left
+			GPIO.output(26,0) #Left motor turns clockwise
+			GPIO.output(24,1)
+			GPIO.output(19,1) #Right motor turns clockwise
+			GPIO.output(21,0)
+			time.sleep(2)
+		if k==0: #Obstacle detected on left IR sensor
+			print "Obstacle detected on Left",k
+			GPIO.output(26,1)
+			GPIO.output(24,0)
+			GPIO.output(19,1)
+			GPIO.output(21,0)		
+			time.sleep(1)
 
-		if faces != []: # If any faces are found
-			print 'Face(s) found at:'
-			for face in faces:
-				# Print the coordinates for each face found
-				coOrd = face.coordinates()
-				print '%s' % coOrd
-		else:
-			print 'No faces found.'
-		print '--------------------'	# This just breaks things up for easy viewing
+			GPIO.output(26,1)
+			GPIO.output(24,0)
+			GPIO.output(19,0)
+			GPIO.output(21,1)
+			time.sleep(2)
 
-except KeyboardInterrupt:
-	print 'Exit'
+		elif i==0 and k==0:
+			print "Obstacles on both sides"
+			GPIO.output(26,1)
+			GPIO.output(24,0)
+			GPIO.output(19,1)
+			GPIO.output(21,0)		
+			time.sleep(2)
+
+			GPIO.output(26,1)
+			GPIO.output(24,0)
+			GPIO.output(19,0)
+			GPIO.output(21,1)
+			time.sleep(4)
+			
+		elif i==1 and k==1:	#No obstacles, robot moves forward
+			print "No obstacles",i
+			#Robot moves forward
+			GPIO.output(26,0)
+			GPIO.output(24,1)
+			GPIO.output(19,0)
+			GPIO.output(21,1)
+			time.sleep(0.5)
+		j=GPIO.input(16)
+		if j==1: #De activate robot on pushin the button
+			flag=0
+			print "Robot De-Activated",j
+			GPIO.output(26,0)
+			GPIO.output(24,0)
+			GPIO.output(19,0)
+			GPIO.output(21,0)
+			time.sleep(1)
