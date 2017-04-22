@@ -16,7 +16,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 #initialize the camer
-cam = Camera()
+IMG = Camera()
 #set the max display size
 display = Display((800,600))
 
@@ -42,13 +42,13 @@ while True:
         #set a time variable that updates with the loop
         current_time = time.time()
         #grab an image still from the camera and convert it to grayscale
-        img01 = cam.getImage().toGray()
+        img01 = IMG.getImage().toGray()
         #wait half a second
         time.sleep(0.5)
 	#grab an unedited still to use as our original image
-	original = cam.getImage()
+	original = IMG.getImage()
         #grab another image still from the camera and conver it to grayscale
-        img02 = cam.getImage().toGray()
+        img02 = IMG.getImage().toGray()
         #subract the images from each other, binarize and inver the colors
         diff = (img01 - img02).binarize(50).invert()
 
