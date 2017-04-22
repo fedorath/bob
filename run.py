@@ -125,12 +125,9 @@ while True:
 			#if it does, add one to the filename and try again
 			i += 1
 		#once a unique filename has been found, save the image
-		original.save("pic/motion%s-%s.png" % (timestr, i))
+		Photo.save("pic/motion%s-%s.png" % (timestr, i))
 		#print results to terminal
 		print("Motion Detected")
-
-	#send the current image to the webcam stream
-	original.save(streaming)
 
 def gmail(png_file):
 
