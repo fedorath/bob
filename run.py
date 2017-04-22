@@ -142,7 +142,7 @@ def main():
 
             # if it does, add one to the filename and try again
 
-            	i += 1
+            	   i += 1
 
         # once a unique filename has been found, save the image
 
