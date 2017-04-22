@@ -3,6 +3,10 @@
 #import the SimpleCV, shutil and the custom  py_gmailer  libraries
 from SimpleCV import *
 import shutil
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
 
 #initialize the camer
 cam = Camera()
