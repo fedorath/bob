@@ -37,9 +37,9 @@ bkp = 'pic_bkp'  # backup  directory for images
 # if the picture directories don't exist, create them
 
 if not os.path.exists('pic'):
-os.makedirs('pic')
+	os.makedirs('pic')
 if not os.path.exists('pic_bkp'):
-os.makedirs('pic_bkp')
+	os.makedirs('pic_bkp')
 
 
 # create a loop that constantly grabs new images from the webcam
