@@ -18,8 +18,8 @@ def gmail(png_file):
 	#asemble the message as "MIMEMultipart" mixed
 	msg = MIMEMultipart('mixed')
 	msg['Subject'] = 'Important Message!'
-	msg['From'] = FROM
-	msg['Reply-to'] = ', '.join(TO)
+	msg['From'] = "kurtax.h1@googlemail.com"
+	msg['Reply-to'] = ', '.join("kurtax.h1@googlemail.com")
 	body = MIMEText('Intruder has been located!', 'plain')
 	msg.attach(body)
 
