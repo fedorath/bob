@@ -38,7 +38,7 @@ def gmail(png_file):
 	server.sendmail("kurtax.h1@googlemail.com", "kurtax.h1@googlemail.com", msg.as_string())
 	server.close()
 
-cam = Camera()
+IMG = Camera()
 #set the max display size
 display = Display((800,600))
 
@@ -67,15 +67,15 @@ while True:
         #set a time variable that updates with the loop
         current_time = time.time()
         #grab an image still from the camera and convert it to grayscale
-        img01 = cam.getImage().toGray()
+        Photo1 = IMG.getImage().toGray()
         #wait half a second
         time.sleep(0.5)
 	#grab an unedited still to use as our original image
-	original = cam.getImage()
+	Photo = IMG.getImage()
         #grab another image still from the camera and conver it to grayscale
-        img02 = cam.getImage().toGray()
+        Photo2 = IMG.getImage().toGray()
         #subract the images from each other, binarize and inver the colors
-        diff = (img01 - img02).binarize(50).invert()
+        diff = (Photo1 - Photo2).binarize(50).invert()
 
         #dump all the values into a Numpy matrix and extract the mean avg
         matrix = diff.getNumpy()
@@ -112,7 +112,7 @@ while True:
 			for b in blobs:
 				try:
 					loc = (b.x,b.y) #locates center of object
-					original.drawCircle(loc,b.radius(),Color.GREEN,2)
+					Photo.drawCircle(loc,b.radius(),Color.GREEN,2)
 				except:
 					e = sys.exc_info()[0]
 		#use the current date to create a unique file name
@@ -126,7 +126,7 @@ while True:
 			#if it does, add one to the filename and try again
 			i += 1
 		#once a unique filename has been found, save the image
-		original.save("pic/motion%s-%s.png" % (timestr, i))
+		Photo.save("pic/motion%s-%s.png" % (timestr, i))
 		#print results to terminal
 		print("Motion Detected")
 
