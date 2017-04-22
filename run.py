@@ -32,7 +32,6 @@ threshold = 5.0
 # set timer variables for email loop
 
 start_time = time.time()
-wait_time = 60  # in seconds
 
 # create destination & backup directories for the pictures
 Path = "CCTV" #destination directory for images
@@ -80,12 +79,6 @@ while True:
     # find and highlight the objects within the image
 
         blobs = diff.findBlobs()
-
-        # check to see if the wait time has been passed
-
-	if current_time >= (start_time + wait_time):
-		#if it has, reset the start time
-		start_time = time.time()
 		#scan the picture directory for files
 		for root, dirs, files in os.walk(Path):
 			Path_root = root.replace(Path, BPath)
