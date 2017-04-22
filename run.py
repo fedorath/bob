@@ -105,7 +105,7 @@ def main():
 
             # move any files in the pic directory to the backup directory
 
-           	 for file_ in files:
+           	for file_ in files:
                 	src_file = os.path.join(root, file_)
                 	dst_file = os.path.join(dst_root, file_)
                 	shutil.move(src_file, dst_root)
