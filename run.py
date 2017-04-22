@@ -94,7 +94,7 @@ def main():
         # scan the picture directory for files
 
         	for (root, dirs, files) in os.walk(dst):
-            	dst_root = root.replace(dst, bkp)
+            		dst_root = root.replace(dst, bkp)
 
             # if a file is found in the picture directory, send it to email
 
