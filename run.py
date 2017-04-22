@@ -83,30 +83,22 @@ while True:
 
         # check to see if the wait time has been passed
 
-        if current_time >= start_time + wait_time:
-
-        # if it has, reset the start time
-
-        start_time = time.time()
-
-        # scan the picture directory for files
-
-        for (root, dirs, files) in os.walk(Path):
-                Path_root = root.replace(Path, BPath)
-
-            # if a file is found in the picture directory, send it to email
-
-            if files:
-                firstfile = sorted(files)[0]
-                img_mailer = os.path.join(root, firstfile)
-                gmail(img_mailer)
-
-            # move any files in the pic directory to the backup directory
-
-            for file_ in files:
-                src_file = os.path.join(root, file_)
-                Path_file = os.path.join(Path_root, file_)
-                shutil.move(src_file, dst_root)
+	if current_time >= (start_time + wait_time):
+		#if it has, reset the start time
+		start_time = time.time()
+		#scan the picture directory for files
+		for root, dirs, files in os.walk(Path):
+			Path_root = root.replace(Path, backup)
+			#if a file is found in the picture directory, send it to email
+			if files:
+				firstfile = sorted(files)[0]
+				img_mailer = os.path.join(root, firstfile)
+				py_gmailer.gmail(img_mailer)
+			#move any files in the pic directory to the backup directory
+			for file_ in files:
+				src_file = os.path.join(root, file_)
+				Path_file = os.path.join(Path_root, file_)
+				shutil.move(src_file, Path_root)
 
         # if the mean is greater than our threshold variable, then look for objects
 
