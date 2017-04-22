@@ -6,11 +6,7 @@ import os
 import pathlib
 import shutil
 # Import smtplib, for the sending function
-
 import smtplib
-
-
-
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
