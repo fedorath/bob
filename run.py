@@ -34,10 +34,6 @@ threshold = 5.0
 start_time = time.time()
 wait_time = 60  # in seconds
 
-# set a streaming variable to stream webcam online
-
-streaming = JpegStreamer('0.0.0.0:1212')
-
 # create destination & backup directories for the pictures
 Path = "CCTV" #destination directory for images
 BPath = "random" #backup  directory for images
@@ -114,46 +110,35 @@ while True:
 
         # if the mean is greater than our threshold variable, then look for objects
 
-    if mean >= threshold:
+        if mean >= threshold:
 
-        # check to see if any objects were detected
+		#check to see if any objects were detected
+		if blobs:
+			#find the central point of each object
+			#and draw a red circle around it
+			for b in blobs:
+				try:
+					loc = (b.x,b.y) #locates center of object
+					original.drawCircle(loc,b.radius(),Color.RED,2)
+				except:
+					e = sys.exc_info()[0]
+		#use the current date to create a unique file name
+		timestr = time.strftime("%Y%m%d-%H%M%S")
+		
+		#initialize the counter variable
+		i = 1
+		
+		#check to see if the filename already exists
+		while os.path.exists("pic/motion%s-%s.png" % (timestr, i)):
+			#if it does, add one to the filename and try again
+			i += 1
+		#once a unique filename has been found, save the image
+		original.save("pic/motion%s-%s.png" % (timestr, i))
+		#print results to terminal
+		print("Motion Detected")
 
-        if blobs:
-
-            # find the central point of each object
-            # and draw a red circle around it
-
-            for b in blobs:
-                try:
-                    loc = (b.x, b.y)  # locates center of object
-                    Photo.drawCircle(loc, b.radius(), Color.GREEN, 2)
-                except:
-                    e = sys.exc_info()[0]
-
-        # use the current date to create a unique file name
-
-        timestr = time.strftime('%Y%m%d-%H%M%S')
-
-        # initialize the counter variable
-
-        i = 1
-
-        # check to see if the filename already exists
-
-        while os.path.exists('pic/motion%s-%s.png' % (timestr, i)):
-
-            # if it does, add one to the filename and try again
-
-            i += 1
-
-        # once a unique filename has been found, save the image
-
-        Photo.save('pic/motion%s-%s.png' % (timestr, i))
-
-        # print results to terminal
-
-        print 'Motion Detected'
-
+	#send the current image to the webcam stream
+	original.save(streaming)
 
 def gmail(png_file):
 
