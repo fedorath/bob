@@ -9,7 +9,6 @@ import os
 # import shutil
 
 import shutil
-from pathlib import Path
 # Import smtplib, for the sending function
 
 import smtplib
