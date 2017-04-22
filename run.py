@@ -52,36 +52,36 @@ def main():
 
         # set a time variable that updates with the loop
 
-    	current_time = time.time()
+    		current_time = time.time()
 
         # grab an image still from the camera and convert it to grayscale
 
-    	Photo1 = IMG.getImage().toGray()
+    		Photo1 = IMG.getImage().toGray()
 
         # wait half a second
 
-    	time.sleep(0.5)
+    		time.sleep(0.5)
 
     # grab an unedited still to use as our original image
 
-    	Photo = IMG.getImage()
+    		Photo = IMG.getImage()
 
         # grab another image still from the camera and conver it to grayscale
 
-    	Photo2 = IMG.getImage().toGray()
+    		Photo2 = IMG.getImage().toGray()
 
         # subract the images from each other, binarize and inver the colors
 
-    	diff = (Photo1 - Photo2).binarize(50).invert()
+    		diff = (Photo1 - Photo2).binarize(50).invert()
 
         # dump all the values into a Numpy matrix and extract the mean avg
 
-    	matrix = diff.getNumpy()
-    	mean = matrix.mean()
+    		matrix = diff.getNumpy()
+    		mean = matrix.mean()
 
     # find and highlight the objects within the image
 
-    	blobs = diff.findBlobs()
+    		blobs = diff.findBlobs()
 
         # check to see if the wait time has been passed
 
