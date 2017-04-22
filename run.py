@@ -69,7 +69,7 @@ def gmail(png_file):
 
 def main():
 #create a loop that constantly grabs new images from the webcam
-while True:
+	while True:
         #set a time variable that updates with the loop
         current_time = time.time()
         #grab an image still from the camera and convert it to grayscale
