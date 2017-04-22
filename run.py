@@ -121,12 +121,12 @@ def main():
             # find the central point of each object
             # and draw a red circle around it
 
-            	for b in blobs:
-                	try:
-                    	loc = (b.x, b.y)  # locates center of object
-                    	Photo.drawCircle(loc, b.radius(), Color.GREEN, 2)
-                	except:
-                    	e = sys.exc_info()[0]
+            		for b in blobs:
+                	    try:
+                    		loc = (b.x, b.y)  # locates center of object
+                    		Photo.drawCircle(loc, b.radius(), Color.GREEN, 2)
+                	    except:
+                    		e = sys.exc_info()[0]
 
         # use the current date to create a unique file name
 
