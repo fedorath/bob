@@ -42,16 +42,11 @@ streaming = JpegStreamer('0.0.0.0:1212')
 Path = "CCTV" #destination directory for images
 BPath = "random" #backup  directory for images
 
-# if the picture directories don't exist, create them
-path  = Path("/my/directory/CCTV")
-backup  = BPath("/my/directory/random")
-
-
-if not os.path.exists(path):
+if not os.path.exists("CCTV"):
         os.makedirs('CCTV')
         
 if not os.path.exists(backup):
-        os.makedirs('pic_bkp')
+        os.makedirs("random")
 
 # create a loop that constantly grabs new images from the webcam
 
