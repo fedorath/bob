@@ -5,17 +5,21 @@
 
 from SimpleCV import *
 
+import os
 # import shutil
 
 import shutil
-
+from pathlib import Path
 # Import smtplib, for the sending function
 
 import smtplib
 
+from time import sleep
+
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+
 IMG = Camera()
 
 # set the max display size
@@ -41,10 +45,12 @@ dst = 'pic'  # destination directory for images
 bkp = 'pic_bkp'  # backup  directory for images
 
 # if the picture directories don't exist, create them
-
-if not os.path.exists('pic'):
-    os.makedirs('pic')
-if not os.path.exists('pic_bkp'):
+path = Path("/my/directory/CCTV")
+try:
+if not os.path.exists(path):
+    os.makedirs('CCTV')
+backup = BPath("/my/directory/random")   
+if not os.path.exists(backup):
     os.makedirs('pic_bkp')
 
 # create a loop that constantly grabs new images from the webcam
@@ -94,8 +100,8 @@ while True:
 
         # scan the picture directory for files
 
-        for (root, dirs, files) in os.walk(dst):
-            dst_root = root.replace(dst, bkp)
+        for (root, dirs, files) in os.walk(path):
+            path_root = root.replace(path, backup)
 
             # if a file is found in the picture directory, send it to email
 
@@ -108,7 +114,7 @@ while True:
 
             for file_ in files:
                 src_file = os.path.join(root, file_)
-                dst_file = os.path.join(dst_root, file_)
+                path_file = os.path.join(path_root, file_)
                 shutil.move(src_file, dst_root)
 
         # if the mean is greater than our threshold variable, then look for objects
