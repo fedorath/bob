@@ -98,7 +98,7 @@ if current_time >= (start_time + wait_time):
 
         # if the mean is greater than our threshold variable, then look for objects
 
-        if mean >= threshold:
+	if mean >= threshold:
 
 		#check to see if any objects were detected
 		if blobs:
