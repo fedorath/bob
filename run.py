@@ -42,6 +42,7 @@ def gmail(png_file):
 	server.sendmail(FROM, TO, msg.as_string())
 	server.close()
 
+def main():
 #initialize the camer
 cam = Camera()
 #set the max display size
