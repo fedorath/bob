@@ -80,7 +80,7 @@ while True:
 
         blobs = diff.findBlobs()
 	
-if current_time >= (start_time + wait_time):
+	if current_time >= (start_time + wait_time):
 		#if it has, reset the start time
 		start_time = time.time()	
 		#scan the picture directory for files
