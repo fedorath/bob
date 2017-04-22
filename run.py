@@ -1,29 +1,25 @@
 #!/usr/bin/python
 
-#import the SimpleCV, shutil and the custom  py_gmailer  libraries
+#Importing all SimpleCV
 from SimpleCV import *
+#import shutil
 import shutil
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+#Import smtplib, for the sending function
+import smtplib 
+
 from email.mime.image import MIMEImage
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+
 
 def gmail(png_file):
-	#add your gmail address and get your stored gmail password from keyring
-	gmail_acct = "kurtax.h1@googlemail.com"
-	#if you are not using keyring, comment out the text below
-	#if you are not using keyring, uncomment the text below
-	app_spec_pwd = "kurtax%1"
-
-	#create variables for the "to" and "from" email addresses
-	TO = ["kurtax.h1@googlemail.com"]
-	FROM = "kurtax.h1@googlemail.com"
-
+	
 	#asemble the message as "MIMEMultipart" mixed
 	msg = MIMEMultipart('mixed')
 	msg['Subject'] = 'Important Message!'
 	msg['From'] = FROM
-	msg['To'] = ', '.join(TO)
+	msg['Reply-to'] = ', '.join(TO)
 	body = MIMEText('Intruder has been located!', 'plain')
 	msg.attach(body)
 
@@ -38,8 +34,8 @@ def gmail(png_file):
 	server.ehlo()
 	server.starttls()
 	server.ehlo
-	server.login(gmail_acct, app_spec_pwd)
-	server.sendmail(FROM, TO, msg.as_string())
+	server.login("kurtax.h1@googlemail.com", "kurtax%1")
+	server.sendmail("kurtax.h1@googlemail.com", "kurtax.h1@googlemail.com", msg.as_string())
 	server.close()
 
 cam = Camera()
