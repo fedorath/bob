@@ -88,7 +88,7 @@ while True:
 		start_time = time.time()
 		#scan the picture directory for files
 		for root, dirs, files in os.walk(Path):
-			Path_root = root.replace(Path, backup)
+			Path_root = root.replace(Path, BPath)
 			#if a file is found in the picture directory, send it to email
 			if files:
 				firstfile = sorted(files)[0]
