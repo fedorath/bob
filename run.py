@@ -11,6 +11,7 @@ from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+def main()
 
 IMG = Camera()
 #set the max display size
@@ -104,7 +105,6 @@ while True:
 		#print results to terminal
 		print("Motion Detected")
 
-	
 
 def gmail(png_file):
 	
@@ -131,3 +131,6 @@ def gmail(png_file):
 	server.sendmail("kurtax.h1@googlemail.com", "kurtax.h1@googlemail.com", msg.as_string())
 	server.close()
 
+
+if __name__ == '__main__':
+  main()
