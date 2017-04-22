@@ -47,10 +47,10 @@ backup = BPath("/my/directory/random")
 
 
 if not os.path.exists(path):
-os.makedirs('CCTV')
+        os.makedirs('CCTV')
         
 if not os.path.exists(backup):
-os.makedirs('pic_bkp')
+        os.makedirs('pic_bkp')
 
 # create a loop that constantly grabs new images from the webcam
 
