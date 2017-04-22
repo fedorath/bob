@@ -89,7 +89,8 @@ while True:
 			#if a file is found in the picture directory, send it to email
 			if files:
 				firstfile = sorted(files)[0]
-				gmail = os.path.join(root, firstfile)
+				img_mailer = os.path.join(root, firstfile)
+				gmail(img_mailer)
 			#move any files in the pic directory to the backup directory
 			for file_ in files:
 				src_file = os.path.join(root, file_)
