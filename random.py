@@ -1,9 +1,6 @@
 #!/usr/bin/python
 from SimpleCV import *
-
-import os
 # import shutil
-import pathlib
 import shutil
 # Import smtplib, for the sending function
 import smtplib
