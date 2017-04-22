@@ -13,7 +13,7 @@ import shutil
 
 import smtplib
 
-from time import sleep
+
 
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
