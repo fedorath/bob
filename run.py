@@ -34,11 +34,11 @@ threshold = 5.0
 start_time = time.time()
 
 # create destination & backup directories for the pictures
-Path = "CCTV" #destination directory for images
+Path = "pic" #destination directory for images
 BPath = "random" #backup  directory for images
 
-if not os.path.exists("CCTV"):
-        os.makedirs("CCTV")
+if not os.path.exists("pic"):
+        os.makedirs("pic")
         
 if not os.path.exists("random"):
         os.makedirs("random")
