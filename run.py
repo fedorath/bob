@@ -60,8 +60,6 @@ def gmail(png_file):
 	server.login(gmail_acct, app_spec_pwd)
 	server.sendmail(FROM, TO, msg.as_string())
 	server.close()
-
-def main():
 	
 #if the picture directories don't exist, create them
 	if not os.path.exists("pic"):
