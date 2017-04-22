@@ -79,7 +79,7 @@ while True:
 
     # find and highlight the objects within the image
 
-       blobs = diff.findBlobs()
+        blobs = diff.findBlobs()
 
         # check to see if the wait time has been passed
 
