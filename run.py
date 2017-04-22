@@ -39,10 +39,12 @@ wait_time = 60  # in seconds
 streaming = JpegStreamer('0.0.0.0:1212')
 
 # create destination & backup directories for the pictures
+Path = "CCTV" #destination directory for images
+BPath = "random" #backup  directory for images
 
 # if the picture directories don't exist, create them
-PATH  = Path("/my/directory/CCTV")
-PATH  = BPath("/my/directory/random")
+path  = Path("/my/directory/CCTV")
+backup  = BPath("/my/directory/random")
 
 
 if not os.path.exists(path):
