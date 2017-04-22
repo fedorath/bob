@@ -43,9 +43,9 @@ Path = "CCTV" #destination directory for images
 BPath = "random" #backup  directory for images
 
 if not os.path.exists("CCTV"):
-        os.makedirs('CCTV')
+        os.makedirs("CCTV")
         
-if not os.path.exists(backup):
+if not os.path.exists("random"):
         os.makedirs("random")
 
 # create a loop that constantly grabs new images from the webcam
