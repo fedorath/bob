@@ -26,12 +26,6 @@ streaming = JpegStreamer("0.0.0.0:1212")
 dst = "pic" #destination directory for images
 bkp = "pic_bkp" #backup  directory for images
 
-#if the picture directories don't exist, create them
-if not os.path.exists("pic"):
-	os.makedirs("pic")
-if not os.path.exists("pic_bkp"):
-	os.makedirs("pic_bkp")
-
 
 def gmail(png_file):
 	#add your gmail address and get your stored gmail password from keyring
@@ -68,6 +62,13 @@ def gmail(png_file):
 	server.close()
 
 def main():
+	
+#if the picture directories don't exist, create them
+	if not os.path.exists("pic"):
+		os.makedirs("pic")
+	if not os.path.exists("pic_bkp"):
+		os.makedirs("pic_bkp")
+
 #create a loop that constantly grabs new images from the webcam
 	while True:
         #set a time variable that updates with the loop
