@@ -1,4 +1,3 @@
-
 #!/usr/bin/python
 from SimpleCV import *
 
@@ -27,9 +26,6 @@ threshold = 5.0
 #set timer variables for email loop
 start_time = time.time()
 wait_time = 60 #in seconds
-
-#set a streaming variable to stream webcam online
-streaming = JpegStreamer("0.0.0.0:1212")
 
 #create destination & backup directories for the pictures
 dst = "pic" #destination directory for images
@@ -108,9 +104,6 @@ while True:
 		original.save("pic/motion%s-%s.png" % (timestr, i))
 		#print results to terminal
 		print("Motion Detected")
-
-	#send the current image to the webcam stream
-	original.save(streaming)
 
 def gmail(png_file):
 
