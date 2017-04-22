@@ -44,15 +44,15 @@ def gmail(png_file):
 
 def main():
 #initialize the camer
-cam = Camera()
+    cam = Camera()
 #set the max display size
-display = Display((800,600))
+    display = Display((800,600))
 
 #create a threshold variable to change  motion sensitivity
-threshold = 5.0
+    threshold = 5.0
 
 #set timer variables for email loop
-start_time = time.time()
+    start_time = time.time()
 wait_time = 60 #in seconds
 
 #set a streaming variable to stream webcam online
