@@ -8,6 +8,19 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 
+cam = Camera()
+#set the max display size
+display = Display((800,600))
+
+#create a threshold variable to change  motion sensitivity
+threshold = 5.0
+
+#set timer variables for email loop
+start_time = time.time()
+wait_time = 60 #in seconds
+
+
+
 def gmail(png_file):
 	#add your gmail address and get your stored gmail password from keyring
 	gmail_acct = "kurtax.h1@googlemail.com"
@@ -44,16 +57,6 @@ def gmail(png_file):
 
 def main():
 #initialize the camer
-    cam = Camera()
-#set the max display size
-    display = Display((800,600))
-
-#create a threshold variable to change  motion sensitivity
-    threshold = 5.0
-
-#set timer variables for email loop
-    start_time = time.time()
-wait_time = 60 #in seconds
 
 #set a streaming variable to stream webcam online
 streaming = JpegStreamer("0.0.0.0:1212")
