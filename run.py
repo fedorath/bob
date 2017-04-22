@@ -10,44 +10,43 @@ import smtplib
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+IMG = Camera()
 
+# set the max display size
+
+display = Display((800, 600))
+
+# create a threshold variable to change  motion sensitivity
+
+threshold = 5.0
+
+# set timer variables for email loop
+
+start_time = time.time()
+wait_time = 60  # in seconds
+
+# set a streaming variable to stream webcam online
+
+streaming = JpegStreamer('0.0.0.0:1212')
+
+# create destination & backup directories for the pictures
+
+dst = 'pic'  # destination directory for images
+bkp = 'pic_bkp'  # backup  directory for images
+
+# if the picture directories don't exist, create them
+
+if not os.path.exists('pic'):
+os.makedirs('pic')
+if not os.path.exists('pic_bkp'):
+os.makedirs('pic_bkp')
+
+
+# create a loop that constantly grabs new images from the webcam
 
 
 def main():
 
-    IMG = Camera()
-
-# set the max display size
-
-    display = Display((800, 600))
-
-# create a threshold variable to change  motion sensitivity
-
-    threshold = 5.0
-
-# set timer variables for email loop
-
-    start_time = time.time()
-    wait_time = 60  # in seconds
-
-# set a streaming variable to stream webcam online
-
-    streaming = JpegStreamer('0.0.0.0:1212')
-
-# create destination & backup directories for the pictures
-
-    dst = 'pic'  # destination directory for images
-    bkp = 'pic_bkp'  # backup  directory for images
-
-# if the picture directories don't exist, create them
-
-    if not os.path.exists('pic'):
-        os.makedirs('pic')
-    if not os.path.exists('pic_bkp'):
-        os.makedirs('pic_bkp')
-
-
-# create a loop that constantly grabs new images from the webcam
 
 while True:
 
