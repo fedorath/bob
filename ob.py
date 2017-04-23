@@ -16,7 +16,7 @@ GPIO.output(26,0)
 GPIO.output(24,0)
 GPIO.output(19,0)
 GPIO.output(21,0)
-
+speed = 10
 flag=0
 while True:
 	j=GPIO.input(15)
@@ -30,53 +30,53 @@ while True:
 		if i==0: #Obstacle detected on right IR sensor
 			print "Obstacle detected on Right",i 
 			#Move in reverse direction
-			GPIO.output(26,1) #Left motor turns anticlockwise
+			GPIO.output(26,speed) #Left motor turns anticlockwise
 			GPIO.output(24,0)  
-			GPIO.output(19,1) #Right motor turns clockwise
+			GPIO.output(19,speed) #Right motor turns clockwise
 			GPIO.output(21,0)		
 			time.sleep(1)
 
 			#Turn robot left
 			GPIO.output(26,0) #Left motor turns clockwise
-			GPIO.output(24,1)
-			GPIO.output(19,1) #Right motor turns clockwise
+			GPIO.output(24,speed)
+			GPIO.output(19,speed) #Right motor turns clockwise
 			GPIO.output(21,0)
 			time.sleep(2)
 		if k==0: #Obstacle detected on left IR sensor
 			print "Obstacle detected on Left",k
-			GPIO.output(26,1)
+			GPIO.output(26,speed)
 			GPIO.output(24,0)
-			GPIO.output(19,1)
+			GPIO.output(19,speed)
 			GPIO.output(21,0)		
 			time.sleep(1)
 
-			GPIO.output(26,1)
+			GPIO.output(26,speed)
 			GPIO.output(24,0)
 			GPIO.output(19,0)
-			GPIO.output(21,1)
+			GPIO.output(21,speed)
 			time.sleep(2)
 
 		elif i==0 and k==0:
 			print "Obstacles on both sides"
-			GPIO.output(26,1)
+			GPIO.output(26,speed)
 			GPIO.output(24,0)
-			GPIO.output(19,1)
+			GPIO.output(19,speed)
 			GPIO.output(21,0)		
 			time.sleep(2)
 
-			GPIO.output(26,1)
+			GPIO.output(26,speed)
 			GPIO.output(24,0)
 			GPIO.output(19,0)
-			GPIO.output(21,1)
+			GPIO.output(21,speed)
 			time.sleep(4)
 			
 		elif i==1 and k==1:	#No obstacles, robot moves forward
 			print "No obstacles",i
 			#Robot moves forward
 			GPIO.output(26,0)
-			GPIO.output(24,1)
+			GPIO.output(24,speed)
 			GPIO.output(19,0)
-			GPIO.output(21,1)
+			GPIO.output(21,speed)
 			time.sleep(0.5)
 		j=GPIO.input(15)
 		if j==1: #De activate robot on pushin the button
