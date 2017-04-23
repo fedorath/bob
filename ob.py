@@ -78,7 +78,7 @@ while True:
 			GPIO.output(19,0)
 			GPIO.output(21,speed)
 			time.sleep(0.5)
-		j=GPIO.input(15)
+		j=GPIO.input(13)
 		if j==1: #De activate robot on pushin the button
 			flag=0
 			print "Robot De-Activated",j
