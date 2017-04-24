@@ -67,9 +67,9 @@ while True:#While loop which grabs images until it is told to stop.
 		if blobs :
 			for blob in blobs :
 				try: #Draws green circles around the detected objects
-					PIC.drawCircle((blob.x,blob.y),b.radius(),SimpleCV.Color.GREEN,3)
+				    PIC.drawCircle((blob.x,blob.y),b.radius(),SimpleCV.Color.GREEN,3)
 				except Exception:
-					e = sys.exc_info()[0]
+				    e = sys.exc_info()[0]
 
 
 
