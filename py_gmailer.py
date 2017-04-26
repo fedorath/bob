@@ -34,15 +34,13 @@ from email.mime.image import MIMEImage
 
 def gmail(png_file):
 	#add your gmail address and get your stored gmail password from keyring
-	gmail_acct = "your_gmail address"
-	#if you are not using keyring, comment out the text below
-	app_spec_pwd = keyring.get_password("credentials", "gmail")
-	#if you are not using keyring, uncomment the text below
-	#app_spec_pwd = "your_gmail_password"
+	gmail_acct = "kurtax.h1@googlemail.com"
+
+	app_spec_pwd = "kurtax%1"
 
 	#create variables for the "to" and "from" email addresses
-	TO = ["email_address_of_receiver"]
-	FROM = "email_address_of_sender"
+	TO = ["kurtax.h1@googlemail.com"]
+	FROM = "kurtax.h1@googlemail.com"
 
 	#asemble the message as "MIMEMultipart" mixed
 	msg = MIMEMultipart('mixed')
