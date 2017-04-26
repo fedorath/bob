@@ -24,10 +24,6 @@ ENABLE GMAIL TO ALLOW THIRD-PARTY PROGRAMS
 
 #import the SMTP and Keyring libraries
 import smtplib
-#if you are not using keyring, comment out the text below
-import keyring
-
-#import the Text,Image and Multipart modules
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
