@@ -11,7 +11,7 @@ http://tinkernut.com/YtQH9
 
 #import the SimpleCV, shutil and the custom  py_gmailer  libraries
 from SimpleCV import *
-import py_gmailer.py
+import py_gmailer
 import shutil
 
 #initialize the camer
